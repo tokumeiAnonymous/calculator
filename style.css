@@ -1,0 +1,60 @@
+body {
+    background-image: url(resources/Background.png);
+    background-size: cover;
+}
+
+
+.title {
+    text-align: center;
+    margin: 50px;
+}
+
+.calculator {
+    border: 3px solid white;
+    width: 30%;
+    height: 450px;
+    margin: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: rgb(247, 100, 100);
+}
+
+.screen {
+    width: 90%;
+    margin: 20px auto auto auto;
+    padding: 10px;
+    height: 50px;
+    border: 1px solid white;
+    text-align: right;
+    box-sizing: border-box;
+}
+
+.buttons {
+    padding: 20px;
+}
+
+button {
+    height: 50px;
+    width: 50px;
+    margin: 7px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+
+.operation {
+    background-color: rgb(88, 81, 81);
+}
+
+.operation:hover {
+    background-color: darkgray;
+}
+
+.calculate {
+
+    height: 100px;
+    width: 50px;
+    margin: 5px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    float: right;
+}
