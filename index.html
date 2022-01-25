@@ -10,35 +10,33 @@
         <h1 class="title"> Calculator </h1>
         <div class="calculator">
             <div class="screen">
-                <div class="result-holder">0</div>
-                <div class="input-holder"></div>
+                
             </div>
             <div class="buttons">
-                <button id="button9" onclick="input(this.value)" value="9"> 9 </button>
-                <button id="button8" onclick="input(this.value)" value="8"> 8 </button>
-                <button id="button7" onclick="input(this.value)" value="7"> 7 </button>
+                <button class="button" onclick="appendInput(this.value)" value="9"> 9 </button>
+                <button class="button" onclick="appendInput(this.value)" value="8"> 8 </button>
+                <button class="button" onclick="appendInput(this.value)" value="7"> 7 </button>
 
-                <button class="operation" id="multiply" onclick="calculate(this.value)" value="*"> * </button>
-                <button class="calculate" id="delete" onclick=""> del </button>
+                <button class="operation" onclick="chooseOperation(this.value)" value="*"> * </button>
+                <button class="calculate" onclick="deleteLast()"> del </button>
 
-                <button id="button6" onclick="input(this.value)" value="6"> 6 </button>
-                <button id="button5" onclick="input(this.value)" value="5"> 5 </button>
-                <button id="button4" onclick="input(this.value)" value="4"> 4 </button>
+                <button class="button" onclick="appendInput(this.value)" value="6"> 6 </button>
+                <button class="button" onclick="appendInput(this.value)" value="5"> 5 </button>
+                <button class="button" onclick="appendInput(this.value)" value="4"> 4 </button>
 
-                <button class="operation" id="divide" onclick="calculate(this.value)" value="/"> / </button>
+                <button class="operation" onclick="chooseOperation(this.value)" value="/"> / </button>
 
-                <button id="button3" onclick="input(this.value)" value="3"> 3 </button>
-                <button id="button2" onclick="input(this.value)" value="2"> 2 </button>
-                <button id="button1" onclick="input(this.value)" value="1"> 1 </button>
+                <button class="button" onclick="appendInput(this.value)" value="3"> 3 </button>
+                <button class="button" onclick="appendInput(this.value)" value="2"> 2 </button>
+                <button class="button" onclick="appendInput(this.value)" value="1"> 1 </button>
 
-                <button class="operation" id="add" onclick="calculate(this.value)" value="+"> + </button>
-                <button class="calculate" id="equal" onclick="" value="="> = </button>
-                <button id="button0" onclick="input(this.value)" value="0"> 0 </button>
-                <button id="decimal" onclick="input(this.value)" value="."> . </button>
-                <button class="operation" id="subtract" onclick="input(this.value)" value="-"> - </button>
+                <button class="operation" onclick="chooseOperation(this.value)" value="+"> + </button>
+                <button class="calculate" onclick="updateDisplay()" value="="> = </button>
+                <button class="button" onclick="appendInput(this.value)" value="0"> 0 </button>
+                <button class="button" onclick="appendInput(this.value)" value="."> . </button>
+                <button class="operation" onclick="clearDisplay()"> clr </button>
+                <button class="operation" onclick="chooseOperation(this.value)" value="-"> - </button>
 
-                <button id="clear" onclick=""> clr </button>
-                
             </div>
         </div>
 
