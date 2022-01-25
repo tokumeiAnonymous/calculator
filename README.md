@@ -5,5 +5,7 @@
    Background Photo by: Magda Ehlers from Pexels
 
 
-##Corner cases to be solved and features to be added:
+##Features to be added:
+
+-Two layer display for last result and current input and operation
 
