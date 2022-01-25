@@ -10,15 +10,17 @@ const calculator = {
 
 function chooseOperation(operation) {
 
-    calculator.operator = operation;
+    
 
     if (calculator.waitForSecondOperand == false){
         calculator.waitForSecondOperand = true;
         calculator.displayValue = calculator.inputValue;
         calculator.inputValue = '';
+        calculator.operator = operation;
     } else { 
         updateDisplay();
     }
+    calculator.operator = operation;
 }
 
 function updateDisplay() {
@@ -26,7 +28,7 @@ function updateDisplay() {
     const num1 = parseFloat(calculator.displayValue);
     const num2 = parseFloat(calculator.inputValue);
 
-    //if by any chance num1 becomes not a number
+    //if by any chance num1 becomes not a number due to del or clr
     if (isNaN(num1)) {
         clearDisplay();
         return;
