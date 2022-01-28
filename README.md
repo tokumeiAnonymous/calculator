@@ -1,11 +1,11 @@
-##This is a simple implementation of a calculator.
+## This is a simple implementation of a calculator.
 
-##Credits: 
+# #Credits: 
 
    Background Photo by: Magda Ehlers from Pexels
 
 
-##Features to be added:
+# Features to be added:
 
--Two layer display for last result and current input and operation
+- Two layer display for last result and current input and operation
 
