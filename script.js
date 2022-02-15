@@ -8,19 +8,23 @@ const calculator = {
     hasDecimal: false,
 }
 
-function chooseOperation(operation) {
+const display1 = document.querySelector('.display1');
+const display2 = document.querySelector('.display2');
 
-    
+function chooseOperation(operation) {
 
     if (calculator.waitForSecondOperand == false){
         calculator.waitForSecondOperand = true;
         calculator.displayValue = calculator.inputValue;
+        console.log(calculator.inputValue);
         calculator.inputValue = '';
         calculator.operator = operation;
+        updateInput();
     } else { 
         updateDisplay();
     }
     calculator.operator = operation;
+    updateInput();
 }
 
 function updateDisplay() {
@@ -49,18 +53,6 @@ function updateDisplay() {
         calculator.displayValue = num1 - num2;
     }
 
-    const display = document.querySelector('.screen');
-    const child = display.lastElementChild;
-
-    if (child) {
-        display.removeChild(child);
-    }
-
-    const content = document.createElement('div');
-    content.classList.add('display');
-    content.textContent = (`${calculator.displayValue}`);
-    display.appendChild(content);
-
 }
 
 function appendInput(value) {
@@ -75,17 +67,8 @@ function appendInput(value) {
 }
 
 function updateInput() {
-    const input = document.querySelector('.screen');
-    const child = input.lastElementChild;
-
-    if (child) {
-        input.removeChild(child);
-    }
-
-    const content = document.createElement('div');
-    content.classList.add('input');
-    content.textContent = (`${calculator.inputValue}`);
-    input.appendChild(content);
+    display1.innerText = `${calculator.displayValue} ${calculator.operator}`;
+    display2.innerText = `${calculator.inputValue}`;
 }
 
 function clearDisplay() {

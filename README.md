@@ -8,7 +8,7 @@ This was made as an introduction to javascript.
 Background Photo by: Magda Ehlers from Pexels
 
 
-## Features to be added:
+## Need fixing:
+- Overflow with other screen size.
 
-- Two layer display for last result and current input and operation
 
