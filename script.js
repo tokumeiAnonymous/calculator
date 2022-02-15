@@ -53,6 +53,8 @@ function updateDisplay() {
         calculator.displayValue = num1 - num2;
     }
 
+    display1.innerText = `${calculator.displayValue}`;
+    display2.innerText = `${calculator.inputValue}`;
 }
 
 function appendInput(value) {
