@@ -3,6 +3,7 @@
     <head>
         <title>Calculator</title>
         <meta charset="UTF-8">
+        <link rel="icon" href="./resources/calculator-solid.svg">
         <link rel="stylesheet" href="style.css">
         <script src="script.js" defer></script>
     </head>
@@ -24,7 +25,7 @@
                 <button class="button" onclick="appendInput(this.value)" value="7"> 7 </button>
 
                 <button class="operation" onclick="chooseOperation(this.value)" value="*"> * </button>
-                <button class="calculate" onclick="deleteLast()"> del </button>
+                <button class="calculate del" onclick="deleteLast()"> del </button>
 
                 <button class="button" onclick="appendInput(this.value)" value="6"> 6 </button>
                 <button class="button" onclick="appendInput(this.value)" value="5"> 5 </button>
@@ -40,7 +41,7 @@
                 <button class="calculate" onclick="updateDisplay()" value="="> = </button>
                 <button class="button" onclick="appendInput(this.value)" value="0"> 0 </button>
                 <button class="button" onclick="appendInput(this.value)" value="."> . </button>
-                <button class="operation" onclick="clearDisplay()"> clr </button>
+                <button class="operation del" onclick="clearDisplay()"> clr </button>
                 <button class="operation" onclick="chooseOperation(this.value)" value="-"> - </button>
 
             </div>

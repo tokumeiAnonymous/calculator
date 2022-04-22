@@ -1,8 +1,18 @@
-body {
-    background-image: url(resources/Background.png);
-    background-size: cover;
+:root {
+    --isabelline: hsla(21, 26%, 89%, 1);
+    --isabelline-hover: hsla(21, 26%, 89%, .8);
+    --oxford-blue: hsla(224, 35%, 15%, 1);
+    --cg-red: hsla(6, 64%, 50%, 1);
+    --independence: hsla(224, 26%, 31%, 1);
 }
 
+body {
+    background-color: var(--independence);
+}
+
+h1 {
+    color: white;
+}
 
 .title {
     text-align: center;
@@ -10,13 +20,13 @@ body {
 }
 
 .calculator {
-    border: 3px solid white;
-    width: 30%;
+    width: fit-content;
     height: 400px;
     margin: auto;
     padding: 10px;
     box-sizing: border-box;
-    background-color: rgb(247, 100, 100);
+    background-color: var(--oxford-blue);
+    border: 1px solid white;
 }
 
 .screen {
@@ -24,7 +34,6 @@ body {
     margin: 20px auto auto auto;
     padding: 10px;
     height: 60px;
-    border: 1px solid white;
     text-align: right;
     box-sizing: border-box;
     background-color: white;
@@ -32,32 +41,30 @@ body {
 
 .buttons {
     padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 3rem);
+    gap: 1rem;
 }
 
 button {
     height: 50px;
     width: 50px;
     margin: 7px;
-    border: 1px solid gray;
-    background-color: rgba(169, 169, 169, 0.7);
+    background-color: var(--isabelline);
     box-sizing: border-box;
-}
-
-.operation {
-    background-color: rgb(133, 124, 124);
 }
 
 button:hover {
-    background-color: rgba(169, 169, 169, 1);
+    background-color: var(--isabelline-hover);
 }
 
 .calculate {
-
     height: 110px;
     width: 50px;
     margin: 7px;
-    border: 1px solid gray;
     box-sizing: border-box;
-    background-color: rgb(88, 81, 81);
-    float: right;
+}
+
+.del {
+    background-color: var(--cg-red);
 }
