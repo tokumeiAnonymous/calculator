@@ -1,14 +1,10 @@
 # Calculator
 
-This is a simple implementation of calculator.\
-This was made as an introduction to javascript.
+This is a simple implementation of calculator.  
+With a two layer display.  
+One for the previous calculation and other for the current input.
 
 ## Credits: 
-
-Background Photo by: Magda Ehlers from Pexels
-
-
-## Need fixing:
-- Overflow with other screen size.
+[svgbackground](https://www.svgbackgrounds.com/license/) for the background.
 
 

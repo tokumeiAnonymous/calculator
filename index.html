@@ -8,41 +8,36 @@
         <script src="script.js" defer></script>
     </head>
     <body>
-        <h1 class="title"> Calculator </h1>
         <div class="calculator">
+            <div class="title"> Calculator </div>
             <div class="screen">
-                <div class="display1">
-                
-                </div>
-                <div class="display2">
-                
-                </div>
-                
+                <div class="top"></div>
+                <div class="bottom"></div>
             </div>
             <div class="buttons">
-                <button class="button" onclick="appendInput(this.value)" value="9"> 9 </button>
-                <button class="button" onclick="appendInput(this.value)" value="8"> 8 </button>
-                <button class="button" onclick="appendInput(this.value)" value="7"> 7 </button>
+                <button data-value="9"> 9 </button>
+                <button data-value="8"> 8 </button>
+                <button data-value="7"> 7 </button>
 
-                <button class="operation" onclick="chooseOperation(this.value)" value="*"> * </button>
-                <button class="calculate del" onclick="deleteLast()"> del </button>
+                <button data-value="*"> * </button>
+                <button id="del" class="del" data-value="del"> x </button>
 
-                <button class="button" onclick="appendInput(this.value)" value="6"> 6 </button>
-                <button class="button" onclick="appendInput(this.value)" value="5"> 5 </button>
-                <button class="button" onclick="appendInput(this.value)" value="4"> 4 </button>
+                <button data-value="6"> 6 </button>
+                <button data-value="5"> 5 </button>
+                <button data-value="4"> 4 </button>
 
-                <button class="operation" onclick="chooseOperation(this.value)" value="/"> / </button>
+                <button data-value="/"> / </button>
 
-                <button class="button" onclick="appendInput(this.value)" value="3"> 3 </button>
-                <button class="button" onclick="appendInput(this.value)" value="2"> 2 </button>
-                <button class="button" onclick="appendInput(this.value)" value="1"> 1 </button>
+                <button data-value="3"> 3 </button>
+                <button data-value="2"> 2 </button>
+                <button data-value="1"> 1 </button>
 
-                <button class="operation" onclick="chooseOperation(this.value)" value="+"> + </button>
-                <button class="calculate" onclick="updateDisplay()" value="="> = </button>
-                <button class="button" onclick="appendInput(this.value)" value="0"> 0 </button>
-                <button class="button" onclick="appendInput(this.value)" value="."> . </button>
-                <button class="operation del" onclick="clearDisplay()"> clr </button>
-                <button class="operation" onclick="chooseOperation(this.value)" value="-"> - </button>
+                <button data-value="+"> + </button>
+                <button id="equal" data-value="="> = </button>
+                <button data-value="."> . </button>
+                <button data-value="0"> 0 </button>
+                <button id="clr" class="del" data-value="clr"> C </button>
+                <button data-value="-"> - </button>
 
             </div>
         </div>

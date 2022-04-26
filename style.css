@@ -1,32 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Orelega+One&display=swap');
+
+
 :root {
-    --isabelline: hsla(21, 26%, 89%, 1);
-    --isabelline-hover: hsla(21, 26%, 89%, .8);
-    --oxford-blue: hsla(224, 35%, 15%, 1);
-    --cg-red: hsla(6, 64%, 50%, 1);
-    --independence: hsla(224, 26%, 31%, 1);
+    --red: hsla(350, 33%, 41%, 1);
+    --blue: hsla(208, 96%, 48%, 1);
+    --white: hsla(0, 0%, 95%, 1);
+    --light-grey: hsla(0, 0%, 65%, 1);
+    --grey-transparent: hsla(0, 0%, 65%, .5);
+    --black: hsl(0, 0%, 5%);
+    font-family: 'Orelega One', cursive, sans-serif;
+}
+
+* {
+    color: var(--white);
 }
 
 body {
-    background-color: var(--independence);
-}
-
-h1 {
-    color: white;
-}
-
-.title {
-    text-align: center;
-    margin: 50px;
+    background-image: url(./resources/scattered-forcefields.svg);
+    background-size: cover;
+    background-position: center;
 }
 
 .calculator {
     width: fit-content;
     height: 400px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20vh;
     padding: 10px;
     box-sizing: border-box;
-    background-color: var(--oxford-blue);
+    background-color: var(--black);
     border: 1px solid white;
+    font-size: 1.5rem;
 }
 
 .screen {
@@ -36,35 +41,55 @@ h1 {
     height: 60px;
     text-align: right;
     box-sizing: border-box;
-    background-color: white;
+    background-color: var(--grey-transparent);
+    border: 1px solid var(--white);
+}
+
+.top {
+    font-size: .8rem;
+    color: var(--light-grey);
 }
 
 .buttons {
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(5, 3rem);
-    gap: 1rem;
+    gap: 2px;
 }
 
 button {
     height: 50px;
     width: 50px;
-    margin: 7px;
-    background-color: var(--isabelline);
+    background-color: var(--black);
+    border: 1px solid var(--grey-transparent);
     box-sizing: border-box;
+    font-size: 1.5rem;
 }
 
 button:hover {
-    background-color: var(--isabelline-hover);
-}
-
-.calculate {
-    height: 110px;
-    width: 50px;
-    margin: 7px;
-    box-sizing: border-box;
+    border: 1px solid var(--white);
+    scale: 1.1;
 }
 
 .del {
-    background-color: var(--cg-red);
+    background-color: var(--red);
+}
+
+#del {
+    height: 6rem;
+    width: 3rem;
+    margin-top: 1px;
+    grid-column-start: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+#equal {
+    height: 6rem;
+    width: 3rem;
+    margin-top: 1px;
+    background-color: var(--blue);
+    grid-column-start: 5;
+    grid-row-start: 3;
+    grid-row-end: 5;
 }
