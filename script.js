@@ -1,115 +1,113 @@
 // Model
 const CreateCalculator = () => {
-    let value = 0;
-    let hasNoOperator = true;
-
-    const hasNoFirstOperator = () => hasNoOperator;
-
-    const setFirstInput = (input) => {
-        value = input;
-        hasNoOperator = false;
+    const calculate = (num1, num2, operator) => {
+        if (operator === '+') return add(num1, num2);
+        else if (operator === '-') return minus(num1, num2);
+        else if (operator === '*') return multiply(num1, num2);
+        else if (operator === '/') return divide(num1, num2);
     }
-
-    const calculate = () => Math.round(value * 10000) / 10000;
-
-    const add = (input) => {
-        value = value + input;
+    // the Math.round * n / n is a hack to round decimal places
+    const add = (num1, num2) => Math.round((num1 + num2) * 10000) / 10000;
+    const minus = (num1, num2) => Math.round((num1 - num2) * 10000) / 10000;
+    const multiply = (num1, num2) => Math.round((num1 * num2) * 10000) / 10000;
+    const divide = (num1, num2) => {
+        if (num2 === 0) return undefined;
+        return Math.round((num1 / num2) * 10000) / 10000;
     }
-
-    const minus = (input) => {
-        value = value - input;
-    }
-
-    const multiply = (input) => {
-        value = value * input;
-    }
-
-    const divide = (input) => {
-        if (input == 0) return undefined;
-        value = value / input;
-    }
-
-    const clear = () => {
-        value = 0;
-        hasNoOperator = true;
-    }
-
-    return Object.freeze({ calculate, add, minus, multiply, 
-                          divide, clear, hasNoFirstOperator, setFirstInput });
+    return Object.freeze({calculate});
 }
 
 // Controllers
 function analyzeInput(input) {
     if (input == '.') {
-        if (hasDecimal == true) return;
-        hasDecimal = true;
+        if (inputHasDecimal == true) return;
+        inputHasDecimal = true;
         updateCurrent(input);
     }
-    else if (parseFloat(input) || input == '0') updateCurrent(input);
+    else if (!isNaN(parseFloat(input))) updateCurrent(input);
     else if (input == 'del') updateCurrent(input);
     else if (input == 'clr') clearDisplay();
-    else if (!parseFloat(input)) calculateInputs(input);
+    else if (isNaN(parseFloat(input))) {
+        const value = calculateInputs(input);
+        updatePrevious(input, value);
+    }
 }
 
 function calculateInputs(input) {
-    if (calculator.hasNoFirstOperator()) {
-        calculator.setFirstInput(parseFloat(current.innerText));
-        if (input == '=') {
-            previous.innerText = calculator.calculate();
-            isAfterOperator = false;
+    if (current.innerText == '' && previous.innerText == '') return;
+    let value;
+    inputHasDecimal = false;
+
+    if (hasPendingOperation) {
+        if (input == '=') hasPendingOperation = false;
+        if (current.innerText == '') {
+            if (!isNaN(parseFloat(previous.innerText))) value = previous.innerText;
+            else value = parseFloat(previous.innerText.slice(0, -1));
         }
         else {
-            previous.innerText = `${calculator.calculate()} ${input}`;
-            isAfterOperator = true;
+            const operator = previous.innerText.slice(-1);
+            const num2 = parseFloat(current.innerText);
+            value = calculator.calculate(num1, num2, operator);
+            num1 = value;
         }
     }
-    else if (!isAfterOperator) {
-        const operator = previous.innerText.slice(-1);
-        isAfterOperator = true;
-        if (operator == '*') calculator.multiply(parseFloat(current.innerText));
-        else if (operator == '/') calculator.divide(parseFloat(current.innerText));
-        else if (operator == '+') calculator.add(parseFloat(current.innerText));
-        else if (operator == '-') calculator.minus(parseFloat(current.innerText));
-        if (input == '=') {
-            previous.innerText = calculator.calculate();
-            current.innerText = calculator.calculate();
-            return;
-        }
-        previous.innerText = `${calculator.calculate()} ${input}`;
-        current.innerText = calculator.calculate();
+    else {
+        hasPendingOperation = true;
+        if (current.innerText == '') num1 = parseFloat(previous.innerText);
+        else if (current.innerText != '') num1 = parseFloat(current.innerText);
+        value = num1;
     }
+    return value;
 }
 
 // Display
 function updateCurrent(input) {
-    if (isAfterOperator) {
-        current.innerText = input;
-        isAfterOperator = false;
-    }
-    else if (current.innerText.length >= 16) return;
+    if (current.innerText.length >= 16) return;
+    else if (input == '0' && parseFloat(current.innerText) === 0 && current.innerText.length > 0) return;
     else if (input == 'del') {
-        if (current.innerText.slice(-1) == '.') hasDecimal = false;
-        current.innerText = current.innerText.slice(0, -1);
+        let charToDelete;
+        if (current.innerText == '' ) {
+            charToDelete = previous.innerText.slice(-1)
+            previous.innerText = previous.innerText.slice(0, -1);
+        }
+        else {
+            charToDelete = current.innerText.slice(-1)
+            current.innerText = current.innerText.slice(0, -1);
+        }
+        if (charToDelete == '.') inputHasDecimal = false;
+        else if (charToDelete == '*' || charToDelete == '/' || charToDelete == '+' || charToDelete == '-') {
+            hasPendingOperation = false;
+        }
     }
     // since zero is falsy needed to add ad hoc
     else if (parseFloat(input) || input == '0') current.innerText = current.innerText + input;
     else if (input == '.') {
         current.innerText = current.innerText + input;
-        hasDecimal = true;
+        inputHasDecimal = true;
     }
+}
+
+function updatePrevious(operator, value) {
+    if (value === undefined) return;
+    if (operator == '=') previous.innerText = value;
+    else previous.innerText = value + operator;
+    current.innerText = '';
 }
 
 function clearDisplay() {
     current.innerText = '';
     previous.innerText = '';
-    calculator.clear();
-    hasDecimal = false;
+    inputHasDecimal = false;
+    hasPendingOperation = false;
+    num1 = 0;
 }
 
 // Variables
 const calculator = CreateCalculator();
-let hasDecimal = false;
-let isAfterOperator = false;
+let hasPendingOperation = false;
+let inputHasDecimal = false;
+let num1;
+// let num2;
 
 // DOM objects
 const buttons = document.querySelector('.buttons');

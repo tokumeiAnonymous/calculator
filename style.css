@@ -46,8 +46,7 @@ body {
 }
 
 .top {
-    font-size: .8rem;
-    color: var(--light-grey);
+    color: var(--white);
 }
 
 .buttons {
